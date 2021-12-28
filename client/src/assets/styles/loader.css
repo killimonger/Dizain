@@ -1,0 +1,40 @@
+.contain {
+  transition: all ease 100ms;
+  /* width: 20px;
+  height: 20px; */
+  color: white;
+  /* position: absolute;
+  top: 0;
+  bottom: 0; */
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  /* transform: scaleY(0);
+  transform-origin: top;
+  animation: appear 700ms forwards; */
+}
+
+.loader {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border-top: 5px solid rgb(174, 145, 240);
+  transform: rotate(0deg);
+  opacity: 0;
+  animation: fade 800ms linear forwards, rotate 1s linear infinite forwards;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  to {
+    transform: scaleY(1);
+  }
+}

@@ -1,6 +1,6 @@
 // Assets
 import '../assets/styles/login.css';
-import illustration from '../assets/imgs/login-background.png';
+// import illustration from '../assets/imgs/login-background.png';
 //Components
 import SignInForm from '../components/connexionform';
 import SignUpForm from '../components/loginform';
@@ -17,7 +17,7 @@ function Login() {
     <div className="container">
       {userIsLoggedIn()}
       <div className="container-login">
-        <img src={illustration} alt="Logo" className="illustration" />
+        {/* <img src={illustration} alt="Logo" className="illustration" /> */}
 
         <div className="loginform">
           {toggleLogin ? (
