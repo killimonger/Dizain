@@ -1,0 +1,2 @@
+- Je dois preparer le terrain pour les requetes axios
+- Preparer le dossier "client"
