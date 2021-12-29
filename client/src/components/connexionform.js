@@ -8,18 +8,21 @@ function Loginform({ setToggle }) {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   let navigate = useNavigate();
-  let baseURL = 'http://localhost:3001/api/users';
+  let baseURL = 'http://localhost:5000/users';
   const registerUser = async (e) => {
     e.preventDefault();
     navigate(`/c/${email}${pwd}`, { replace: true });
     // https://reactrouter.com/docs/en/v6/getting-started/tutorial
     axios
       .get(baseURL)
-      .then((response) => {})
+      .then((response) => {
+        console.log(response.data);
+      })
       .catch((err) => {
         console.log('Cannot get the server');
         console.log(err);
       });
+
     // let userData = {
     //   emailUser: email,
     //   pwdUser: pwd,

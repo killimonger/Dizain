@@ -1,13 +1,40 @@
-import { Link } from 'react-router-dom';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
-import { Outlet } from 'react-router-dom';
-// import registerUser from '../utils/utilities/registerUser';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const registerUser = (e) => {
-  e.preventDefault();
-  console.log("World doesn't respond");
-};
+const axios = require('axios');
+
 function Loginform({ setToggle }) {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [pwd, setPwd] = useState('');
+  let navigate = useNavigate();
+  let baseURL = 'http://localhost:5000/users';
+  const registerUser = async (e) => {
+    e.preventDefault();
+    navigate(`/c`, { replace: true });
+    // https://reactrouter.com/docs/en/v6/getting-started/tutorial
+    axios
+      .post(`${baseURL}/n`, {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: pwd,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log('Cannot get the server');
+        console.log(err);
+      });
+
+    // let userData = {
+    //   emailUser: email,
+    //   pwdUser: pwd,
+    // };
+  };
   return (
     <form action="" onSubmit={registerUser}>
       <h1>S'inscrire</h1>
@@ -22,12 +49,42 @@ function Loginform({ setToggle }) {
           <span>Facebook</span>
         </button>
       </div>
-      <label htmlFor="name">Nom d'utilisateur</label>
-      <input type="text" name="name" id="name" />
-      <label htmlFor="lastname">Email</label>
-      <input type="email" name="lastname" id="lastname" />
+      <label htmlFor="firstName">Nom</label>
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
+      />
+      <label htmlFor="lastName">Prénom</label>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      />
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
       <label htmlFor="password">Mot de passe</label>
-      <input type="password" name="password" id="password" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        onChange={(e) => {
+          setPwd(e.target.value);
+        }}
+      />
       <button type="submit">
         <Outlet />
         S'inscrire

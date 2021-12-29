@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ArticleSchema = new mongoose.Schema({
+const ArtworkSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,

@@ -5,7 +5,10 @@ const Artwork = require('../models/Artwork');
 
 //@desc Login/Landing page
 //@route GET /
-router.get('/', ensureGuest, (req, res) => {
+router.get('/user', (req, res) => {
+  res.status(200).json('Hello World bro');
+});
+router.get('/q', ensureGuest, (req, res) => {
   // res.render('login', {
   //   layout: 'login',
   // });
