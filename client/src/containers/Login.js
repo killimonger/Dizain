@@ -9,7 +9,7 @@ import userIsLoggedIn from '../utils/utilities/userIsLoggedIn';
 import { useState } from 'react';
 
 function Login() {
-  const [toggleLogin, setToggleLogin] = useState(true);
+  const [toggleLogin, setToggleLogin] = useState(false);
   const setToggle = () => {
     setToggleLogin(!toggleLogin);
   };

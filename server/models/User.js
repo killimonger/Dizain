@@ -3,15 +3,12 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   googleId: {
     type: String,
-    required: true,
   },
   facebookId: {
     type: String,
-    required: true,
   },
   displayName: {
     type: String,
-    required: true,
   },
   firstName: {
     type: String,
@@ -24,9 +21,16 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   age: {
     type: Number,
-    required: true,
   },
   profilePicture: {
     type: String,

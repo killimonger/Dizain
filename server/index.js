@@ -13,7 +13,10 @@ const connectDB = require('./config/database');
 dotenv.config({ path: './config/config.env' });
 
 // 🎫 Passport Config
-require('./config/passport-local-strategy')(passport);
+// require('./config/passport-local-strategy')(passport, (email) =>
+//   users.find((user) => user.email === email)
+// );
+// require('./config/passport-local-strategy')(passport);
 require('./config/passport-google-strategy')(passport);
 
 // 🔥 Launch app
@@ -27,6 +30,8 @@ app.use(cors());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+// 🌀 Flash middleware
+
 // 📑 Session middlewares
 app.use(
   session({
@@ -44,7 +49,7 @@ app.use(passport.session());
 // 🏳‍🌈 Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/api/user'));
-// app.use('/auth', require('./routes/auth'));
+// app.use('/auth', require('./routes/auth-google'));
 // app.use('/artworks', require('./routes/artworks'));
 
 // Endpoints

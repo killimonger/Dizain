@@ -12,13 +12,30 @@ router.get('/', async (req, res) => {
 router.post('/n', async (req, res) => {
   try {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
-    users.push({
-      id: Date.now().toString(),
+    // users.push({
+    //   id: Date.now().toString(),
+    //   firstName: req.body.firstName,
+    //   lastName: req.body.lastName,
+    //   email: req.body.email,
+    //   password: hashPassword,
+    // });
+
+    const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       password: hashPassword,
     });
+
+    await newUser
+      .save()
+      .then((doc) => {
+        console.log(doc);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     res.status(200).json('We got it');
     console.log(users);
   } catch (err) {
